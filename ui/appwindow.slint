@@ -1,17 +1,10 @@
 import { Button, VerticalBox } from "std-widgets.slint";
+import { Theme, SubTheme } from "./theme.slint";
+
+// Interestingly, if I move the globals Theme and SubTheme here, it won't crash
 
 export component AppWindow inherits Window {
-    in-out property<int> counter: 42;
-    callback request-increase-value();
-    VerticalBox { 
-        Text {
-            text: "Counter: \{root.counter}";
-        }
-        Button {
-            text: "Increase value";
-            clicked => { 
-                root.request-increase-value();
-            }
-        }
-     }
+    init => {
+        Theme.font-family = SubTheme.font-family;
+    }
 }
